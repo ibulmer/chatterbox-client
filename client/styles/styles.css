@@ -91,5 +91,10 @@ form input[type=text] {
 }
 
 .username {
-    background-color: red;
+    background-color: black;
+
+}
+
+.username a {
+    color: white;
 }
