@@ -35,7 +35,7 @@ app.fetch = function(){
     // This is the url you should use to communicate with the parse API server.
     url: 'https://api.parse.com/1/classes/chatterbox',
     type: 'GET',
-    data: JSON.stringify(message),
+    //data: JSON.stringify(message),
     contentType: 'application/json',
     success: function (data) {
       console.log('chatterbox: Message fetched');
@@ -82,6 +82,15 @@ app.clearMessages = function(){
 
 app.addRoom = function(roomname) {
   $("#roomSelect").append("<option value ='"+roomname+"'>"+roomname+"</option>");
+  console.log(roomname);
+};
+
+app.allRoom = function() {
+  for(var i = 0; i < messages.results.length; i++){
+    var roomname = escapeHtml(messages.results[i].roomname);
+    $("#roomSelect").append("<option value ='"+roomname+"'>"+roomname+"</option>");  
+  }
+  console.log(roomname);
 };
 
 app.addFriend = function(){
@@ -90,6 +99,9 @@ app.addFriend = function(){
 
 
 app.handleSubmit = function(user, text, room) {
+  
+
+
   var toSend = {
     username: user,
     text: text,
@@ -100,13 +112,13 @@ app.handleSubmit = function(user, text, room) {
 }
 
 
-var message = {
-username: 'team KI',
-text: "message",
-roomname: 'floor 8'
-};
+// var message = {
+// username: 'team KI',
+// text: "message",
+// roomname: 'floor 8'
+// };
 
-app.send(message);
+// app.send(message);
 app.fetch();
 
 $( document ).ready(function() {
@@ -114,6 +126,7 @@ $( document ).ready(function() {
     app.fetch();
     app.clearMessages();
     app.addMessage();
+    app.allRoom();
   },1000)
 
   $(".username").click(function(){
@@ -125,13 +138,23 @@ $( document ).ready(function() {
   $('#submit').click(function(e){
 
     e.preventDefault();
-    var user = $('#name').val();
+    var user = window.location.search.slice(10);
     var text = $('#msg').val();
     var room = $('#roomSelect :selected').text();
     $('#msg').val("");
     $('#name').val("");
     app.handleSubmit(user, text, room);
   });
+
+  $('#submitroom').click(function(e){
+
+    e.preventDefault();
+    var room = escapeHtml($('#addRoom').val());
+    $('#addRoom').val("");
+
+    app.addRoom(room);
+
+  })
 
 
 
