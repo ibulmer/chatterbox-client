@@ -15,12 +15,25 @@
   <body>
     <div id="main">
       <h1>chatterbox</h1>
+      <div class = ".username">CLICK ME</div>
       <!-- Your HTML goes here! -->
     
       Rooms: 
       <select id="roomSelect">
         <option value="all">All Messages</option>
       </select>
+        <form action="#" method="post">
+        <div>
+          <label>Username:</label>
+          <input type="text" id="name" />
+        </div>
+        <div>
+          <label>Message:</label>
+          <input type = "text" id="msg"/>
+          <button id="submit">Submit</button>
+          <input type ="reset"/>
+        </div>
+</form>
     </div>
     <div id="chats"></div>
   </body>

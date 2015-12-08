@@ -83,9 +83,13 @@ form input[type=text] {
     padding: 10px;
 }
 
-.comments {
+.block {
     border: 10px solid;
     border-color: gray;
     margin: 10px;
-    background-color: gray  
+    background-color: gray;
+}
+
+.username {
+    background-color: red;
 }
