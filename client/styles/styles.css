@@ -82,3 +82,10 @@ form input[type=text] {
 .spinner img {
     padding: 10px;
 }
+
+.comments {
+    border: 10px solid;
+    border-color: gray;
+    margin: 10px;
+    background-color: gray  
+}
