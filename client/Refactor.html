@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- dependencies -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <!-- your scripts -->
+    <script src="env/config.js"></script>
+    <script src="scripts/refactor.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <h1>chatterbox</h1>
+      <div class = ".username">CLICK ME</div>
+      <!-- Your HTML goes here! -->
+    
+      Select Room: 
+      <select id="roomSelect">
+        <option value="all">All Messages</option>
+      </select>Add new room<input type = "text" id="addRoom"/>
+          <button id="submitroom">Submit</button>
+        <form action="#" method="post">
+        
+        <div>
+          <label>Message:</label>
+          <input type = "text" id="msg"/>
+          <button id="submit">Submit</button>
+          <input type ="reset"/>
+        </div>
+</form>
+    </div>
+    <div id="chats"></div>
+
+    <script>
+      $(function(){
+        var messages = new Messages();
+        messages.loadMsgs();
+        var messagesView = new MessagesView({collection: messages});
+      });
+    </script>
+  </body>
+</html>
+
